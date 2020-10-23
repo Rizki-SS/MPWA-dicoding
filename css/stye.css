@@ -1,0 +1,75 @@
+.cover {
+    background-image: linear-gradient( rgba(0, 0, 0, 0.425), rgba(0, 0, 0, 0.425)), url('../asset/Lab.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+.rotate {
+    transform: rotate(90deg);
+}
+
+.header {
+    align-items: center;
+    display: flex;
+}
+
+.parallex-conteten {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+.cover-border {
+    border-radius: 0px 0px 0px 180px;
+}
+
+.conten {
+    padding: 10px;
+    margin: 20px auto !important;
+}
+
+.m-0 {
+    margin: 0px;
+}
+
+.dark-layer {
+    background-color: rgba(01, 56, 68, 0.5)
+}
+
+.dark-layer-1 {
+    background-color: rgba(0, 0, 0, 0.50);
+    max-width: 30%;
+    right: 0;
+    left: 70%;
+}
+
+th {
+    width: 100px!important;
+    margin-top: -23px!important;
+}
+
+.dataTables-empty {
+    text-align: center;
+    height: 110px;
+}
+
+.sidenav-overlay {
+    z-index: 996;
+}
+
+.parallax-feature {
+    height: 35vh !important;
+}
+
+@media only screen and (max-width: 600px) {
+    .parallax-feature {
+        height: 50vh !important;
+    }
+}
