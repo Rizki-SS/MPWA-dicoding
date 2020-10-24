@@ -13,7 +13,6 @@ const loadPage = (page) => {
         if (this.readyState === 4) {
             if (this.status === 200) {
                 content.innerHTML = xhttp.responseText;
-                runScript(page);
                 loadPageHeader(page);
             } else if (this.status === 404) {
                 pageNotFound();
@@ -35,6 +34,7 @@ const loadPageHeader = (page) => {
                 content.innerHTML = xhttp.responseText;
             }
         }
+        runScript(page);
     };
     xhttp.open("GET", 'page/' + page + '/header.html', true);
     xhttp.send();

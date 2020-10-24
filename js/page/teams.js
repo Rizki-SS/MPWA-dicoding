@@ -3,6 +3,7 @@ import { getTims } from "../api.js";
 const runTeams = () => {
     getTims().then((data) => {
         let cardList = '';
+        let logoTimList = '';
         data.forEach(e => {
             e.crestUrl = e.crestUrl.replace(/^http:\/\//i, 'https://')
             cardList += `
@@ -24,14 +25,42 @@ const runTeams = () => {
                     </div>
                     <div class="card-reveal">
                         <span class="card-title grey-text text-darken-4">${e.name}<i class="material-icons right">close</i></span>
-                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                        <table>
+                            <tr>
+                                <td>address</td>
+                                <td>${e.address}</td>
+                            </tr>
+                            <tr>
+                                <td>phone</td>
+                                <td>${e.phone}</td>
+                            </tr>
+                            <tr>
+                                <td>website</td>
+                                <td><a href="${e.website}">${e.website}</a></td>
+                            </tr>
+                            <tr>
+                                <td>email</td>
+                                <td>${e.email}</td>
+                            </tr>
+                            <tr>
+                                <td>founded</td>
+                                <td>${e.founded}</td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </div>
             `
+
+            logoTimList += `<a class="carousel-item"><img src="${e.crestUrl}"></a>`;
         });
 
         document.getElementById('team-list').innerHTML = cardList;
+        document.getElementById('logo-tim').innerHTML = logoTimList;
+
+
+        var elems = document.querySelectorAll('.carousel');
+        var instances = M.Carousel.init(elems);
     })
 }
 

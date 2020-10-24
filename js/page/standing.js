@@ -4,6 +4,7 @@ const runStanding = () => {
     getStandingsTotal().then(data => {
         let tabelData =
             ``;
+        let getTop = true;
         data.forEach(data => {
             tabelData +=
                 `<tr>
@@ -18,10 +19,16 @@ const runStanding = () => {
                         <td>${data.goalDifference}</td>
                         <td>${data.points}</td>
                     </tr>`
+            if (getTop) {
+                document.getElementById("logo-tim").innerHTML = `<img src="${data.team.crestUrl}" alt="" srcset="" style="width: 100%;">`;
+                document.getElementById("tim-name").innerHTML = data.team.name;
+                document.getElementById("win").innerHTML = data.won;
+                document.getElementById("draw").innerHTML = data.draw;
+                document.getElementById("lose").innerHTML = data.lost;
+                getTop = false;
+            }
         });
         document.getElementById("tabel-data").innerHTML = tabelData;
-
-        // const dataTable = new DataTable("#tabel");
     })
 }
 
