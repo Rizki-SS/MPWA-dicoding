@@ -1,12 +1,16 @@
 import runStanding from "./page/standing.js";
+import runTeams from "./page/teams.js";
 
 const runScript = (page) => {
     switch (page) {
         case 'matches':
+            // runStanding();
+            break;
+        case 'stading':
             runStanding();
             break;
-        case 'standing':
-            runStanding();
+        case 'tims':
+            runTeams();
             break;
         default:
             break;

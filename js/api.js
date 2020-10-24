@@ -13,6 +13,7 @@ const getCompoetition = () => {
         .then(res => res.json())
         .then(data => {
             data = data.matches;
+            return data;
         })
         .catch(err => console.log(err))
 }
@@ -23,9 +24,7 @@ const getTims = () => {
         .then(res => res.json())
         .then(data => {
             data = data.teams;
-            data.map((e) => {
-                console.log(e);
-            })
+            return data;
         })
 }
 
