@@ -1,4 +1,4 @@
-import loadPage from "./loadPage.js";
+import { loadPage } from "./loadPage.js";
 
 const init = () => {
     const elemsSideNav = document.querySelectorAll('.sidenav');

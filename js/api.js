@@ -8,22 +8,17 @@ const api_header = {
 }
 
 const getCompoetition = () => {
-    fetch(base + 'competitions/2021/matches/?season=2020', api_header)
+    return fetch(base + 'competitions/2021/matches/?season=2020', api_header)
         .then(status)
         .then(res => res.json())
         .then(data => {
-            let standingsHTML = ''
             data = data.matches;
-            debugger;
-            data.map((e) => {
-                console.log(e);
-            })
         })
         .catch(err => console.log(err))
 }
 
 const getTims = () => {
-    fetch(base + 'competitions/2021/teams/', api_header)
+    return fetch(base + 'competitions/2021/teams/', api_header)
         .then(status)
         .then(res => res.json())
         .then(data => {
@@ -35,13 +30,14 @@ const getTims = () => {
 }
 
 const getStandingsTotal = () => {
-    fetch(base + 'competitions/2021/standings/', api_header)
+    return fetch(base + 'competitions/2021/standings/', api_header)
         .then(res => res.json())
         .then(data => {
             data = data.standings[0].table;
-            data.map((e) => {
-                console.log(e);
-            })
+            return data;
+        })
+        .catch(err => {
+            return err;
         })
 }
 

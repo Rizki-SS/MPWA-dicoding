@@ -1,4 +1,4 @@
-import { run } from "./page/matches.js";
+import runScript from "./runScript.js";
 
 const init = () => {
     let page = window.location.hash.substr(1);
@@ -13,10 +13,7 @@ const loadPage = (page) => {
         if (this.readyState === 4) {
             if (this.status === 200) {
                 content.innerHTML = xhttp.responseText;
-                // var dataTable = new DataTable("#tabel", {
-                //     data: {}
-                // });
-                run();
+                runScript(page);
                 loadPageHeader(page);
             } else if (this.status === 404) {
                 pageNotFound();

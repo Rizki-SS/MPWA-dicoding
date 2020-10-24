@@ -1,12 +1,16 @@
-// import * as Matches from "./page/matches.js";
+import runStanding from "./page/standing.js";
 
-// export default runScript = (page) => {
-//     switch (page) {
-//         case 'matches':
-//             Matches();
-//             break;
+const runScript = (page) => {
+    switch (page) {
+        case 'matches':
+            runStanding();
+            break;
+        case 'standing':
+            runStanding();
+            break;
+        default:
+            break;
+    }
+}
 
-//         default:
-//             break;
-//     }
-// }
+export default runScript;
