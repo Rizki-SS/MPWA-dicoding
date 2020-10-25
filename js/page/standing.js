@@ -2,8 +2,7 @@ import { getStandingsTotal } from "../api.js";
 
 const runStanding = () => {
     getStandingsTotal().then(data => {
-        let tabelData =
-            ``;
+        let tabelData = ``;
         let getTop = true;
         data.forEach(data => {
             tabelData +=

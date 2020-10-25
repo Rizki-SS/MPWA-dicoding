@@ -22,4 +22,26 @@ const btnFavHandle = (data) => {
     }
 }
 
+const saveMatchHandle = (data) => {
+    const btnSave = document.querySelectorAll(".save-match")
+
+    for (let i = 0; i < btnSave.length; i++) {
+        btnSave[i].onclick = () => {
+            const a = data.filter((data) => {
+                return data.id == btnSave[i].dataset.match;
+            })
+            getById("match", parseInt(btnSave[i].dataset.match)).then((data) => {
+                if (data == null) {
+                    saveData("match", a[0])
+                    btnSave[i].innerHTML = `<i class="material-icons">bookmark</i>`
+                } else {
+                    deleteData("match", parseInt(btnSave[i].dataset.match))
+                    btnSave[i].innerHTML = `<i class="material-icons">bookmark_border</i>`
+                }
+            })
+        }
+    }
+}
+
 export default btnFavHandle;
+export { saveMatchHandle, btnFavHandle }

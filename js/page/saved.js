@@ -1,8 +1,38 @@
 import { getAll } from "../database/db.js";
-import btnFavHandle from "../saveHandle.js";
+import btnFavHandle, { saveMatchHandle } from "../saveHandle.js";
 
 const runSaved = () => {
-    // debugger;
+    getAllTeam();
+    getAllMatch();
+}
+
+const getAllMatch = () => {
+    getAll("match").then((data) => {
+        let tabelData = ``;
+        data.forEach(data => {
+            tabelData +=
+                `<tr>
+                        <td>${data.utcDate}</td>
+                        <td>${data.status}</td>
+                        <td>${data.group}</td>
+                        <td>${data.homeTeam.name}</td>
+                        <td>${data.score.winner}</td>
+                        <td>${data.awayTeam.name}</td>
+                        <td>${btn(data.id)}</td>
+                    </tr>`
+        });
+        document.querySelector("#tabel-data").innerHTML = tabelData;
+        saveMatchHandle(data);
+    })
+}
+
+const btn = (data) => {
+    return `<button class="btn-sm save-match" data-match=${data}>
+            <i class="material-icons">bookmark</i>
+            </button>`
+}
+
+const getAllTeam = () => {
     getAll("tims").then((data) => {
         let cardList = '';
         // debugger;

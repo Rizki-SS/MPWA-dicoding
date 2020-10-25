@@ -101,6 +101,11 @@ th {
     color: #333;
 }
 
+.save-match {
+    border: none;
+    background: none;
+}
+
 @media only screen and (max-width: 600px) {
     .parallax-feature {
         height: 50vh !important;
@@ -108,7 +113,7 @@ th {
 }
 
 @media only screen and (max-width: 992px) {
-    table.responsive-table td {
+    .dataTables-empty {
         height: 310px!important;
     }
 }
