@@ -1,10 +1,11 @@
-import { getTims } from "../api.js";
+import { getAll } from "../database/db.js";
 import { btnFavHandle, isSaved } from "../saveHandle.js";
 
-const runTeams = () => {
-    getTims().then((data) => {
+const runSaved = () => {
+    // debugger;
+    getAll().then((data) => {
         let cardList = '';
-        let logoTimList = '';
+        // debugger;
         data.forEach(e => {
             e.crestUrl = e.crestUrl.replace(/^http:\/\//i, 'https://')
             cardList += `
@@ -18,7 +19,7 @@ const runTeams = () => {
                     </div>
                     <div class="card-action">
                         <button class="btn-floating btn-sm red btn-fav" data-tim=${e.id}>
-                            <i class="material-icons">favorite_border</i>
+                            <i class="material-icons">favorite</i>
                         </button>
                         <a href="${e.website}" target="blank" class="btn-floating btn-sm red">
                             <i class="material-icons">insert_link</i>
@@ -29,11 +30,9 @@ const runTeams = () => {
                     </div>
                 </div>
             </div>`
-            logoTimList += `<a class="carousel-item"><img src="${e.crestUrl}"></a>`;
         });
 
         document.querySelector('#team-list').innerHTML = cardList;
-        document.querySelector('#logo-tim').innerHTML = logoTimList;
 
 
         var elems = document.querySelectorAll('.carousel');
@@ -72,4 +71,4 @@ const detail = (e) => {
 
 
 
-export default runTeams;
+export default runSaved;

@@ -47,6 +47,7 @@ const getById = (id) => {
 }
 
 const deleteTims = (id) => {
+    console.log(id);
     dbPromised
         .then((db) => {
             const tx = db.transaction("tims", "readwrite");
