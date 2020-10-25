@@ -20,16 +20,20 @@ const runStanding = () => {
                         <td>${data.points}</td>
                     </tr>`
             if (getTop) {
-                document.getElementById("logo-tim").innerHTML = `<img src="${data.team.crestUrl}" alt="" srcset="" style="width: 100%;">`;
-                document.getElementById("tim-name").innerHTML = data.team.name;
-                document.getElementById("win").innerHTML = data.won;
-                document.getElementById("draw").innerHTML = data.draw;
-                document.getElementById("lose").innerHTML = data.lost;
+                addHeader(data)
                 getTop = false;
             }
         });
         document.getElementById("tabel-data").innerHTML = tabelData;
     })
+}
+
+const addHeader = (data) => {
+    document.getElementById("logo-tim").innerHTML = `<img src="${data.team.crestUrl}" alt="" srcset="" style="width: 100%;">`;
+    document.getElementById("tim-name").innerHTML = data.team.name;
+    document.getElementById("win").innerHTML = data.won;
+    document.getElementById("draw").innerHTML = data.draw;
+    document.getElementById("lose").innerHTML = data.lost;
 }
 
 export default runStanding;

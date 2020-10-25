@@ -24,29 +24,7 @@ const runTeams = () => {
                         </a>
                     </div>
                     <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">${e.name}<i class="material-icons right">close</i></span>
-                        <table>
-                            <tr>
-                                <td>address</td>
-                                <td>${e.address}</td>
-                            </tr>
-                            <tr>
-                                <td>phone</td>
-                                <td>${e.phone}</td>
-                            </tr>
-                            <tr>
-                                <td>website</td>
-                                <td><a href="${e.website}">${e.website}</a></td>
-                            </tr>
-                            <tr>
-                                <td>email</td>
-                                <td>${e.email}</td>
-                            </tr>
-                            <tr>
-                                <td>founded</td>
-                                <td>${e.founded}</td>
-                            </tr>
-                        </table>
+                        ${detail(e)}
                     </div>
                 </div>
             </div>
@@ -62,6 +40,34 @@ const runTeams = () => {
         var elems = document.querySelectorAll('.carousel');
         var instances = M.Carousel.init(elems);
     })
+}
+
+const detail = (e) => {
+    return `
+        <span class="card-title grey-text text-darken-4">${e.name}<i class="material-icons right">close</i></span>
+        <table>
+            <tr>
+                <td>address</td>
+                <td>${e.address}</td>
+            </tr>
+            <tr>
+                <td>phone</td>
+                <td>${e.phone}</td>
+            </tr>
+            <tr>
+                <td>website</td>
+                <td><a href="${e.website}">${e.website}</a></td>
+            </tr>
+            <tr>
+                <td>email</td>
+                <td>${e.email}</td>
+            </tr>
+            <tr>
+                <td>founded</td>
+                <td>${e.founded}</td>
+            </tr>
+        </table>
+    `
 }
 
 export default runTeams;
