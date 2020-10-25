@@ -1,16 +1,20 @@
-const dbPromised = idb.open("premire-info", 1, function(upgradeDb) {
-    const articlesObjectStore = upgradeDb.createObjectStore("tims", {
+const dbPromised = idb.open("premire-info", 2, function(upgradeDb) {
+    const timObjectStore = upgradeDb.createObjectStore("tims", {
         keyPath: "id"
     });
-    articlesObjectStore.createIndex("name", "name", { unique: false });
+    timObjectStore.createIndex("name", "name", { unique: false });
+
+    const matchObjectStore = upgradeDb.createObjectStore("match", {
+        keyPath: "id"
+    });
 });
 
-const saveTims = (tim) => {
+const saveData = (tabel, obj) => {
     dbPromised
         .then((db) => {
-            const tx = db.transaction("tims", "readwrite");
-            const store = tx.objectStore("tims");
-            store.add(tim);
+            const tx = db.transaction(tabel, "readwrite");
+            const store = tx.objectStore(tabel);
+            store.add(obj);
             return tx.complete;
         })
         .then(() => {
@@ -18,12 +22,12 @@ const saveTims = (tim) => {
         })
 }
 
-const getAll = () => {
+const getAll = (tabel) => {
     return new Promise((resolve, reject) => {
         dbPromised
             .then((db) => {
-                const tx = db.transaction("tims", "readonly");
-                const store = tx.objectStore("tims");
+                const tx = db.transaction(tabel, "readonly");
+                const store = tx.objectStore(tabel);
                 return store.getAll();
             })
             .then((tims) => {
@@ -32,12 +36,12 @@ const getAll = () => {
     })
 }
 
-const getById = (id) => {
+const getById = (tabel, id) => {
     return new Promise((resolve, reject) => {
         dbPromised
             .then((db) => {
-                const tx = db.transaction("tims", "readonly");
-                const store = tx.objectStore("tims");
+                const tx = db.transaction(tabel, "readonly");
+                const store = tx.objectStore(tabel);
                 return store.get(id);
             })
             .then((tims) => {
@@ -46,12 +50,12 @@ const getById = (id) => {
     })
 }
 
-const deleteTims = (id) => {
+const deleteData = (tabel, id) => {
     console.log(id);
     dbPromised
         .then((db) => {
-            const tx = db.transaction("tims", "readwrite");
-            const store = tx.objectStore("tims");
+            const tx = db.transaction(tabel, "readwrite");
+            const store = tx.objectStore(tabel);
             store.delete(id);
             return tx.complete;
         })
@@ -67,4 +71,4 @@ const test = () => {
 }
 
 export default test;
-export { getAll, getById, saveTims, deleteTims }
+export { getAll, getById, saveData, deleteData }

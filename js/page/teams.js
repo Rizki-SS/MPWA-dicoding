@@ -1,5 +1,5 @@
 import { getTims } from "../api.js";
-import { btnFavHandle, isSaved } from "../saveHandle.js";
+import btnFavHandle from "../saveHandle.js";
 
 const runTeams = () => {
     getTims().then((data) => {

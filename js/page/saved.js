@@ -1,9 +1,9 @@
 import { getAll } from "../database/db.js";
-import { btnFavHandle, isSaved } from "../saveHandle.js";
+import btnFavHandle from "../saveHandle.js";
 
 const runSaved = () => {
     // debugger;
-    getAll().then((data) => {
+    getAll("tims").then((data) => {
         let cardList = '';
         // debugger;
         data.forEach(e => {
