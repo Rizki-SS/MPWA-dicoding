@@ -16,4 +16,23 @@ const init = () => {
     }
 }
 
+const notification = () => {
+    if ('Notification' in window) {
+        Notification.requestPermission().then((result) => {
+            if (result === 'denied') {
+                console.log('Notifikasi tidak di ijinkan');
+                return;
+            } else if (result === 'default') {
+                console.log("Pengguna menutup kotak dialog permintaan ijin.");
+                return;
+            }
+
+            navigator.serviceWorker.getRegistration().then((reg) => {
+                reg.showNotification('Notifikasi di Ijinkan');
+            })
+        })
+    }
+}
+
 export default init;
+export { init, notification };

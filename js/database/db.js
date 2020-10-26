@@ -1,4 +1,4 @@
-const dbPromised = idb.open("premire-info", 2, function(upgradeDb) {
+const dbPromised = idb.open("premire-info", 1, function(upgradeDb) {
     const timObjectStore = upgradeDb.createObjectStore("tims", {
         keyPath: "id"
     });
@@ -7,6 +7,7 @@ const dbPromised = idb.open("premire-info", 2, function(upgradeDb) {
     const matchObjectStore = upgradeDb.createObjectStore("match", {
         keyPath: "id"
     });
+
 });
 
 const saveData = (tabel, obj) => {

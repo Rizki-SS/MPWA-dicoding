@@ -39,3 +39,26 @@ self.addEventListener("activate", (event) => {
         })
     )
 })
+
+self.addEventListener("push", (event) => {
+    let body;
+    if (event.data) {
+        body = event.data.text();
+    } else {
+        body = "Push Message no payload";
+    }
+
+    const options = {
+        body: body,
+        vibrate: [100, 50, 100],
+        data: {
+            dateOfArrival: Date.now(),
+            icon: './asset/icon/icon-192x192.png',
+            primaryKey: 1
+        }
+    };
+
+    event.waitUntil(
+        self.registration.showNotification('Push Notification', options)
+    )
+})

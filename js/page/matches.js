@@ -23,23 +23,21 @@ async function runMatches() {
             ])
         });
 
-        const dataTable = new DataTable("#tabel", {
+        const dataTable = new simpleDatatables.DataTable("#tabel", {
             perPage: 40,
             data: list,
             perPageSelect: false,
         });
 
-        document.getElementById('tabel').addEventListener("click", () => {
-            console.log("clicked");
-            console.log(this.style);
-        })
-
-        // saveMatchHandle(data);
+        saveMatchHandle(data);
+        dataTable.on('datatable.page', function(page) {
+            saveMatchHandle(data);
+        });
     })
 }
 
 const btn = (data) => {
-    return `<button class="btn-sm save-match" type="button" data-match=${data}>
+    return `<button class="btn-floating btn-sm red save-match waves-effect waves-light" type="button" data-match=${data}>
             <i class="material-icons">bookmark_border</i>
             </button>`
 }

@@ -27,7 +27,7 @@ const getAllMatch = () => {
 }
 
 const btn = (data) => {
-    return `<button class="btn-sm save-match" data-match=${data}>
+    return `<button class="btn-floating btn-sm red save-match waves-effect waves-light" type="button" data-match=${data}>
             <i class="material-icons">bookmark</i>
             </button>`
 }
