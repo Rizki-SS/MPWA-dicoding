@@ -1,8 +1,46 @@
-const CACHE_NAME = "premier-info-v1";
+const CACHE_NAME = "premier-info-v2";
 
 const url = [
     "/",
-    "/sw.js"
+    "/nav.html",
+    "/sw.js",
+    "/manifest.json",
+    "/page/matches/index.html",
+    "/page/matches/header.html",
+    "/page/saved/index.html",
+    "/page/saved/header.html",
+    "/page/stading/index.html",
+    "/page/stading/header.html",
+    "/page/tims/index.html",
+    "/page/tims/header.html",
+    "/js/api.js",
+    "/js/loadMenu.js",
+    "/js/loadPage.js",
+    "/js/materialize.min.js",
+    "/js/pwa.js",
+    "/js/runScript.js",
+    "/js/saveHandle.js",
+    "/js/script.js",
+    "/js/simple-datatables@latest.js",
+    "/js/stickyNavbar.js",
+    "/js/uArray.js",
+    "/js/database/db.js",
+    "/js/database/idb.js",
+    "/js/page/matches.js",
+    "/js/page/saved.js",
+    "/js/page/standing.js",
+    "/js/page/teams.js",
+    "/css/icon.css",
+    "/css/materialize.min.css",
+    "/css/stye.css",
+    "/asset/Image.jpg",
+    "/asset/Image 1.png",
+    "/asset/logo-w.png",
+    "/asset/icon/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2",
+    "/asset/icon/icon.png",
+    "/asset/icon/icon-192x192.png",
+    "/asset/icon/icon-512x512.png",
+    "/asset/icon/maskable_icon.png",
 ]
 
 self.addEventListener("install", (event) => {
