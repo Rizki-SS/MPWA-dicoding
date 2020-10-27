@@ -4,6 +4,8 @@ import runMatches from "./page/matches.js";
 import runSaved from "./page/saved.js";
 
 const runScript = (page) => {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
     switch (page) {
         case 'matches':
             runMatches();

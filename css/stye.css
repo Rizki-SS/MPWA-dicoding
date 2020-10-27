@@ -116,4 +116,7 @@ th {
     .dataTables-empty {
         height: 310px!important;
     }
+    .waiting {
+        height: 510px;
+    }
 }

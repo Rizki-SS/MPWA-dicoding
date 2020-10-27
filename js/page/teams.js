@@ -11,7 +11,6 @@ const runTeams = async() => {
             data[i].crestUrl = data[i].crestUrl.replace(/^http:\/\//i, 'https://')
             let btnType;
             const dataLocal = await getById("tims", data[i].id);
-            console.log(dataLocal);
             cardList += `
             <div class="col s12 m6 l4">
                 <div class="card medium sticky-action">

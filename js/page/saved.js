@@ -6,24 +6,50 @@ const runSaved = () => {
     getAllMatch();
 }
 
-const getAllMatch = () => {
-    getAll("match").then((data) => {
-        let tabelData = ``;
-        data.forEach(data => {
-            tabelData +=
-                `<tr>
-                        <td>${data.utcDate}</td>
-                        <td>${data.status}</td>
-                        <td>${data.group}</td>
-                        <td>${data.homeTeam.name}</td>
-                        <td>${data.score.winner}</td>
-                        <td>${data.awayTeam.name}</td>
-                        <td>${btn(data.id)}</td>
-                    </tr>`
-        });
-        document.querySelector("#tabel-data").innerHTML = tabelData;
+const getAllMatch = async() => {
+    const list = {
+        "headings": [
+            "Date",
+            "Status",
+            "Group.",
+            "Home Team",
+            "Winner",
+            "Away Team",
+            "#",
+        ],
+        "data": [],
+    }
+
+    const data = await getAll("match");
+    data.forEach(data => {
+        list.data.push([
+            data.utcDate,
+            data.status,
+            data.group,
+            data.homeTeam.name,
+            data.score.winner,
+            data.awayTeam.name,
+            btn(data.id)
+        ])
+    });
+
+    const dataTable = new simpleDatatables.DataTable("#tabel", {
+        perPage: 10,
+        data: list,
+        perPageSelect: false,
+        columns: [{
+            select: 3,
+            render: (data, cell, row) => {
+                return `<span class="text-blue">${data}</span>`;
+            }
+        }]
+    });
+
+    saveMatchHandle(data);
+    dataTable.on('datatable.page', function(page) {
         saveMatchHandle(data);
-    })
+    });
+
 }
 
 const btn = (data) => {
