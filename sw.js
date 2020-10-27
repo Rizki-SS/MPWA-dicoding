@@ -1,4 +1,4 @@
-const CACHE_NAME = "premier-info-v2";
+const CACHE_NAME = "premier-info-v1";
 
 const url = [
     "/",

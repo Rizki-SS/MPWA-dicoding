@@ -1,7 +1,7 @@
 import { getCompoetition } from "../api.js";
 import { saveMatchHandle } from "../saveHandle.js";
 
-async function runMatches() {
+const runMatches = () => {
     getCompoetition().then((data) => {
         const list = {
             "headings": [
