@@ -46,7 +46,7 @@ const runMatches = async() => {
         dataTable.on('datatable.sort', function(column, direction) {
             saveMatchHandle(matchAll);
         });
-        dataTable.on('datatable.perpage', function(perpage) {
+        dataTable.on('datatable.search', function(query, matched) {
             saveMatchHandle(matchAll);
         });
 

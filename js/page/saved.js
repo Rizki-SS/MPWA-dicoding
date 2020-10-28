@@ -44,13 +44,13 @@ const getAllMatch = async() => {
 
         saveMatchHandle(data);
         dataTable.on('datatable.page', function(page) {
-            saveMatchHandle(matchAll);
+            saveMatchHandle(data);
         });
         dataTable.on('datatable.sort', function(column, direction) {
-            saveMatchHandle(matchAll);
+            saveMatchHandle(data);
         });
-        dataTable.on('datatable.perpage', function(perpage) {
-            saveMatchHandle(matchAll);
+        dataTable.on('datatable.search', function(query, matched) {
+            saveMatchHandle(data);
         });
     } catch (error) {
         console.log(error);
