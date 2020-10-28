@@ -1,5 +1,6 @@
 import { getAll } from "../database/db.js";
 import btnFavHandle, { saveMatchHandle } from "../saveHandle.js";
+import { start, end } from "../spinner.js";
 
 const runSaved = () => {
     getAllTeam();
@@ -7,53 +8,58 @@ const runSaved = () => {
 }
 
 const getAllMatch = async() => {
-    const list = {
-        "headings": [
-            "Date",
-            "Status",
-            "Group.",
-            "Home Team",
-            "Winner",
-            "Away Team",
-            "#",
-        ],
-        "data": [],
-    }
+    start();
+    try {
+        const list = {
+            "headings": [
+                "Date",
+                "Status",
+                "Group.",
+                "Home Team",
+                "Winner",
+                "Away Team",
+                "#",
+            ],
+            "data": [],
+        }
 
-    const data = await getAll("match");
-    data.forEach(data => {
-        list.data.push([
-            data.utcDate,
-            data.status,
-            data.group,
-            data.homeTeam.name,
-            data.score.winner,
-            data.awayTeam.name,
-            btn(data.id)
-        ])
-    });
+        const data = await getAll("match");
+        data.forEach(data => {
+            list.data.push([
+                data.utcDate,
+                data.status,
+                data.group,
+                data.homeTeam.name,
+                data.score.winner,
+                data.awayTeam.name,
+                btn(data.id)
+            ])
+        });
 
-    const dataTable = new simpleDatatables.DataTable("#tabel", {
-        perPage: 10,
-        data: list,
-        perPageSelect: false,
-        columns: [{
-            select: 3,
-            render: (data, cell, row) => {
-                return `<span class="text-blue">${data}</span>`;
-            }
-        }]
-    });
+        const dataTable = new simpleDatatables.DataTable("#tabel", {
+            perPage: 10,
+            data: list,
+            perPageSelect: false,
+        });
 
-    saveMatchHandle(data);
-    dataTable.on('datatable.page', function(page) {
         saveMatchHandle(data);
-    });
-
+        dataTable.on('datatable.page', function(page) {
+            saveMatchHandle(matchAll);
+        });
+        dataTable.on('datatable.sort', function(column, direction) {
+            saveMatchHandle(matchAll);
+        });
+        dataTable.on('datatable.perpage', function(perpage) {
+            saveMatchHandle(matchAll);
+        });
+    } catch (error) {
+        console.log(error);
+    }
+    end();
 }
 
 const btn = (data) => {
-    return `<button class="btn-floating btn-sm red save-match waves-effect waves-light" type="button" data-match=${data}>
+    return `<button class="btn btn-floating btn-sm save-match waves-effect waves-light" type="button" data-match=${data}>
             <i class="material-icons">bookmark</i>
             </button>`
 }
@@ -68,16 +74,16 @@ const getAllTeam = () => {
             <div class="col s12 m6 l4">
                 <div class="card medium sticky-action">
                     <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator" src="${e.crestUrl}" style=" max-height: 240px">
+                    <img class="activator" src="${e.crestUrl}">
                     </div>
                     <div class="card-content">
                     <span class="card-title activator grey-text text-darken-4">${e.name}<i class="material-icons right">more_vert</i></span>
                     </div>
                     <div class="card-action">
-                        <button class="btn-floating btn-sm red btn-fav" data-tim=${e.id}>
+                        <button class="btn btn-floating btn-sm btn-fav" data-tim=${e.id}>
                             <i class="material-icons">favorite</i>
                         </button>
-                        <a href="${e.website}" target="blank" class="btn-floating btn-sm red">
+                        <a href="${e.website}" target="blank" class="btn btn-floating btn-sm">
                             <i class="material-icons">insert_link</i>
                         </a>
                     </div>

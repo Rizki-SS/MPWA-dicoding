@@ -15,7 +15,7 @@ const getCompoetition = () => {
             data = data.matches;
             return data;
         })
-        .catch(err => console.log(err))
+        .catch(err => err)
 }
 
 const getTims = () => {
@@ -25,7 +25,7 @@ const getTims = () => {
         .then(data => {
             data = data.teams;
             return data;
-        })
+        }).catch(err => err)
 }
 
 const getStandingsTotal = () => {
@@ -35,9 +35,7 @@ const getStandingsTotal = () => {
             data = data.standings[0].table;
             return data;
         })
-        .catch(err => {
-            return err;
-        })
+        .catch(err => err)
 }
 
 export default getCompoetition;

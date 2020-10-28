@@ -1,0 +1,13 @@
+{
+    "publicKey":"BKtoemyR9_-oLdePbbvIrLRP5ariHo0FW9NUtrr5AACz7Ubq4bLuupCj9RlBJOuihQJP3kDOb7ajGJlorKQOD7c",
+    "privateKey":"qo8uH7iRaIA6_aIjAfkie9ELyd-AvxrctKv18KBcN8M"
+}
+
+colorPlatter = {
+    color-1: #A2D5F2;
+    color-2: #40A8C4;
+    color-3: #07689F;
+    color-4: #FFC93C;
+}
+
+https://itnext.io/why-async-await-in-a-foreach-is-not-working-5f13118f90d

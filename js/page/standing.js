@@ -1,30 +1,36 @@
 import { getStandingsTotal } from "../api.js";
+import { start, end } from "../spinner.js";
 
-const runStanding = () => {
-    getStandingsTotal().then(data => {
+const runStanding = async() => {
+    start();
+    try {
+        const data = await getStandingsTotal();
         let tabelData = ``;
         let getTop = true;
-        data.forEach(data => {
+        data.forEach(e => {
             tabelData +=
                 `<tr>
-                        <td>${data.position}</td>
-                        <td>${data.team.name}</td>
-                        <td>${data.playedGames}</td>
-                        <td>${data.won}</td>
-                        <td>${data.draw}</td>
-                        <td>${data.lost}</td>
-                        <td>${data.goalsFor}</td>
-                        <td>${data.goalsAgainst}</td>
-                        <td>${data.goalDifference}</td>
-                        <td>${data.points}</td>
+                        <td>${e.position}</td>
+                        <td>${e.team.name}</td>
+                        <td>${e.playedGames}</td>
+                        <td class="text-color-3">${e.won}</td>
+                        <td class="text-color-4">${e.draw}</td>
+                        <td class="red-text">${e.lost}</td>
+                        <td>${e.goalsFor}</td>
+                        <td>${e.goalsAgainst}</td>
+                        <td>${e.goalDifference}</td>
+                        <td class="text-color-3">${e.points}</td>
                     </tr>`
             if (getTop) {
-                addHeader(data)
+                addHeader(e)
                 getTop = false;
             }
         });
         document.querySelector("#tabel-data").innerHTML = tabelData;
-    })
+    } catch (error) {
+        console.log(error);
+    }
+    end();
 }
 
 const addHeader = (data) => {

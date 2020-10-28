@@ -1,5 +1,32 @@
+:root {
+    --color-1: #A2D5F2;
+    --color-2: #40A8C4;
+    --color-3: #07689F;
+    --color-4: #FFC93C;
+}
+
+.text-color-3 {
+    color: var(--color-3);
+}
+
+.text-color-4 {
+    color: var(--color-4);
+}
+
+.bg-color-2 {
+    background-color: var(--color-2);
+}
+
+.bg-color-3 {
+    background-color: var(--color-3);
+}
+
+.btn {
+    background-color: var(--color-4)!important;
+}
+
 .cover {
-    background-image: linear-gradient( rgba(0, 0, 0, 0.425), rgba(0, 0, 0, 0.425)), url('../asset/Lab.jpg');
+    background-image: url('../asset/Lab.jpg');
     background-size: cover;
     background-position: center;
     height: 80vh;
@@ -27,7 +54,7 @@
 }
 
 .cover-border {
-    border-radius: 0px 0px 0px 180px;
+    border-radius: 0px 0px 50px 50px;
 }
 
 .conten {
@@ -40,14 +67,9 @@
 }
 
 .dark-layer {
-    background-color: rgba(01, 56, 68, 0.5)
-}
-
-.dark-layer-1 {
-    background-color: rgba(0, 0, 0, 0.50);
-    max-width: 30%;
-    right: 0;
-    left: 70%;
+    background: rgb(7, 104, 159);
+    background: linear-gradient(180deg, rgba(7, 103, 159, 0.6) 0%, rgba(162, 213, 242, 0.6) 100%);
+    /* background-color: rgba(01, 56, 68, 0.5) */
 }
 
 th {
@@ -104,6 +126,40 @@ th {
 .save-match {
     border: none;
     background: none;
+}
+
+.card .card-image img {
+    max-height: 220px;
+    margin: 10px;
+}
+
+blockquote {
+    border-left: 5px solid var(--color-4);
+}
+
+.loading {
+    position: fixed;
+    z-index: 999;
+    height: 2em;
+    width: 2em;
+    overflow: show;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    visibility: hidden;
+}
+
+.loading:before {
+    content: '';
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 @media only screen and (max-width: 600px) {
