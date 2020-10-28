@@ -5,7 +5,6 @@ const init = (e) => {
 }
 
 const start = () => {
-    debugger;
     spinner.style.visibility = 'visible';
 }
 

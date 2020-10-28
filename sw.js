@@ -1,4 +1,4 @@
-const CACHE_NAME = "premier-info-v3";
+const CACHE_NAME = "premier-info-v5";
 
 const url = [
     "/",
@@ -22,6 +22,7 @@ const url = [
     "/js/saveHandle.js",
     "/js/script.js",
     "/js/simple-datatables@latest.js",
+    "/js/spinner.js",
     "/js/stickyNavbar.js",
     "/js/uArray.js",
     "/js/database/db.js",

@@ -1,4 +1,4 @@
-var webPush = require('D:\laragon\bin\nodejs\node-v12.17.0-win-x64\node_modules\web-push');
+var webPush = require('web-push');
 
 const vapidKeys = {
     "publicKey": "BKtoemyR9_-oLdePbbvIrLRP5ariHo0FW9NUtrr5AACz7Ubq4bLuupCj9RlBJOuihQJP3kDOb7ajGJlorKQOD7c",
@@ -12,13 +12,13 @@ webPush.setVapidDetails(
     vapidKeys.privateKey
 )
 var pushSubscription = {
-    "endpoint": "https://fcm.googleapis.com/fcm/send/dkBfozZ17bg:APA91bEKwL0JzwqE81knDGegNDgeM92yaGTvAVlv6_jzxK4JuJ9UuV32vtlZON5LGlxvknf5-gFmlBs6GP_RsmJXBgMFvRZdrq-kT5WtfZ2JWGREeKVPJYXk_YBBZKvF41KaLqhlIDDX",
+    "endpoint": "https://fcm.googleapis.com/fcm/send/cnSxLVDYgfY:APA91bGto39vLGJu5luJdD8vvKqjnUnjB4RBiY4cDQthl_UfiwCoEbcWpxFnYjL3KOamk0N_XyVj276An9zmm7Xvm3DMewOLJ88IvUS0uwnEXTf7jlRcILwRu8WFaaCENaIHj9wFOgyG",
     "keys": {
-        "p256dh": "BP2l0qacnIrZoKZGKCX8wEeTgT6XtGGclOM7qC2DiIenZxcyk0r8LlVBKn7QfTS6f6izOOhB5gHpLjbYl5WjwC0=",
-        "auth": "XX3Gon7+VxzIypb747V3wQ=="
+        "p256dh": "BFdbK9b/AEgM732MLdE+tjcExQHLk7JoMcJ/N9+W3mwOhoMZG5IGIuRAMzbiffbXwaxBWNthAsMOgbfmlpwM6W0=",
+        "auth": "ROWtsuiNjdSbh2xBpyv/rA=="
     }
 };
-var payload = 'Selamat! Aplikasi Anda sudah dapat menerima push notifikasi!';
+var payload = 'Notication Check Ok';
 
 var options = {
     gcmAPIKey: '1088860100645',
