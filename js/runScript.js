@@ -10,10 +10,10 @@ const runScript = (page) => {
         case 'matches':
             runMatches();
             break;
-        case 'stading':
+        case 'standing':
             runStanding();
             break;
-        case 'tims':
+        case 'teams':
             runTeams();
             break;
         case 'saved':

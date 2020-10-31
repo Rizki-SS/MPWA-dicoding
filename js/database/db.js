@@ -18,9 +18,6 @@ const saveData = (tabel, obj) => {
             store.add(obj);
             return tx.complete;
         })
-        .then(() => {
-            console.log("Berhasil di simpan");
-        })
 }
 
 const getAll = (tabel) => {
@@ -52,16 +49,12 @@ const getById = (tabel, id) => {
 }
 
 const deleteData = (tabel, id) => {
-    console.log(id);
     dbPromised
         .then((db) => {
             const tx = db.transaction(tabel, "readwrite");
             const store = tx.objectStore(tabel);
             store.delete(id);
             return tx.complete;
-        })
-        .then(() => {
-            console.log("item deleted");
         })
 }
 
