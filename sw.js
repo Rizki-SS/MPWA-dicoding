@@ -1,86 +1,88 @@
-const CACHE_NAME = "premier-info-v5";
+importScripts('https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js');
 
-const url = [
-    "/",
-    "/nav.html",
-    "/sw.js",
-    "/manifest.json",
-    "/page/matches/index.html",
-    "/page/matches/header.html",
-    "/page/saved/index.html",
-    "/page/saved/header.html",
-    "/page/stading/index.html",
-    "/page/stading/header.html",
-    "/page/tims/index.html",
-    "/page/tims/header.html",
-    "/js/api.js",
-    "/js/loadMenu.js",
-    "/js/loadPage.js",
-    "/js/materialize.min.js",
-    "/js/pwa.js",
-    "/js/runScript.js",
-    "/js/saveHandle.js",
-    "/js/script.js",
-    "/js/simple-datatables@latest.js",
-    "/js/spinner.js",
-    "/js/stickyNavbar.js",
-    "/js/uArray.js",
-    "/js/database/db.js",
-    "/js/database/idb.js",
-    "/js/page/matches.js",
-    "/js/page/saved.js",
-    "/js/page/standing.js",
-    "/js/page/teams.js",
-    "/css/icon.css",
-    "/css/materialize.min.css",
-    "/css/stye.css",
-    "/asset/Image.jpg",
-    "/asset/Image 1.png",
-    "/asset/logo-w.png",
-    "/asset/icon/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2",
-    "/asset/icon/icon.png",
-    "/asset/icon/icon-192x192.png",
-    "/asset/icon/icon-512x512.png",
-    "/asset/icon/maskable_icon.png",
-]
 
-self.addEventListener("install", (event) => {
-    event.waitUntil(
-        caches.open(CACHE_NAME).then((caches) => {
-            return caches.addAll(url);
-        })
-    )
-})
+// check workbox
+if (workbox) {
+    console.log('Workbox berhasil di muat');
+} else {
+    console.log('gagal memuat workbox');
+}
+// workbox.setConfig({
+//     debug: true
+// });
 
-self.addEventListener('fetch', function(event) {
-    event.respondWith(
-        caches.open(CACHE_NAME).then(function(cache) {
-            return cache.match(event.request).then(function(response) {
-                var fetchPromise = fetch(event.request).then(function(networkResponse) {
-                    cache.put(event.request, networkResponse.clone());
-                    return networkResponse;
-                })
-                return response || fetchPromise;
-            })
-        })
-    );
-});
+// install
+workbox.precaching.precacheAndRoute([
+    { url: '/index.html', revision: '1' },
+    { url: '/nav.html', revision: '1' },
+    { url: '/css/materialize.min.css', revision: '1' },
+    { url: '/css/stye.css', revision: '1' },
+    { url: '/js/materialize.min.js', revision: '1' },
+    { url: '/js/api.js', revision: '1' },
+    { url: '/js/loadMenu.js', revision: '1' },
+    { url: '/js/loadPage.js', revision: '1' },
+    { url: '/js/pwa.js', revision: '1' },
+    { url: '/js/runScript.js', revision: '1' },
+    { url: '/js/saveHandle.js', revision: '1' },
+    { url: '/js/script.js', revision: '1' },
+    { url: '/js/simple-datatables@latest.js', revision: '1' },
+    { url: '/js/spinner.js', revision: '1' },
+    { url: '/js/stickyNavbar.js', revision: '1' },
+    { url: '/js/uArray.js', revision: '1' },
+    { url: '/js/database/db.js', revision: '1' },
+    { url: '/js/database/idb.js', revision: '1' },
+]);
 
-self.addEventListener("activate", (event) => {
-    event.waitUntil(
-        caches.keys()
-        .then((cacheNames) => {
-            return Promise.all(
-                cacheNames.map((cacheName) => {
-                    if (cacheName != CACHE_NAME) {
-                        return caches.delete(cacheName);
-                    }
-                })
-            )
-        })
-    )
-})
+// register page
+workbox.routing.registerRoute(
+    new RegExp('/page/'),
+    workbox.strategies.cacheFirst({
+        cacheName: 'page',
+        plugins: [
+            new workbox.expiration.Plugin({
+                maxAgeSeconds: 7 * 24 * 60 * 60, // 30 hari
+            }),
+        ],
+    })
+);
 
+// register local image
+workbox.routing.registerRoute(
+    /\.(?:png|gif|jpg|jpeg|svg)$/,
+    workbox.strategies.cacheFirst({
+        cacheName: 'images',
+        plugins: [
+            new workbox.expiration.Plugin({
+                maxEntries: 10,
+                maxAgeSeconds: 7 * 24 * 60 * 60, // 30 hari
+            }),
+        ],
+    }),
+);
+
+// register global iamge
+workbox.routing.registerRoute(
+    ({ event }) => event.request.destination === 'image',
+    workbox.strategies.cacheFirst({
+        cacheName: 'images-outers',
+        plugins: [
+            new workbox.expiration.Plugin({
+                maxEntries: 25,
+                maxAgeSeconds: 2 * 24 * 60 * 60, // 30 hari
+            }),
+        ],
+    }),
+);
+
+// register api route
+workbox.routing.registerRoute(
+    /^https:\/\/api\.football-data\.org/,
+    workbox.strategies.staleWhileRevalidate({
+        cacheName: 'football-data',
+    })
+);
+
+//
 self.addEventListener("push", (event) => {
     let body;
     if (event.data) {
@@ -98,7 +100,6 @@ self.addEventListener("push", (event) => {
             primaryKey: 1
         }
     };
-
     event.waitUntil(
         self.registration.showNotification('Push Notification', options)
     )
