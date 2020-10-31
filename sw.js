@@ -16,6 +16,7 @@
         { url: '/index.html', revision: '1' },
         { url: '/page/matches/index.html', revision: '1' },
         { url: '/page/matches/header.html', revision: '1' },
+        { url: '/js/page/matches.html', revision: '1' },
         { url: '/page/saved/index.html', revision: '1' },
         { url: '/page/saved/header.html', revision: '1' },
         { url: '/page/teams/index.html', revision: '1' },
@@ -39,20 +40,11 @@
         { url: '/js/uArray.js', revision: '1' },
         { url: '/js/database/db.js', revision: '1' },
         { url: '/js/database/idb.js', revision: '1' },
+        { url: '/js/page/matches.js', revision: '1' },
+        { url: '/js/page/saved.js', revision: '1' },
+        { url: '/js/page/teams.js', revision: '1' },
+        { url: '/js/page/standing.js', revision: '1' },
     ]);
-
-    // register page
-    workbox.routing.registerRoute(
-        new RegExp('/page/'),
-        workbox.strategies.cacheFirst({
-            cacheName: 'page',
-            plugins: [
-                new workbox.expiration.Plugin({
-                    maxAgeSeconds: 7 * 24 * 60 * 60, // 30 hari
-                }),
-            ],
-        })
-    );
 
     // register local image
     workbox.routing.registerRoute(
