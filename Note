@@ -14,11 +14,6 @@ colorPlatter = {
 
 https://itnext.io/why-async-await-in-a-foreach-is-not-working-5f13118f90d
 
-console subcribe :
-Berhasil melakukan subscribe dengan endpoint:  https://fcm.googleapis.com/fcm/send/cnSxLVDYgfY:APA91bGto39vLGJu5luJdD8vvKqjnUnjB4RBiY4cDQthl_UfiwCoEbcWpxFnYjL3KOamk0N_XyVj276An9zmm7Xvm3DMewOLJ88IvUS0uwnEXTf7jlRcILwRu8WFaaCENaIHj9wFOgyG
-pwa.js:39 Berhasil melakukan subscribe dengan p256dh key:  BFdbK9b/AEgM732MLdE+tjcExQHLk7JoMcJ/N9+W3mwOhoMZG5IGIuRAMzbiffbXwaxBWNthAsMOgbfmlpwM6W0=
-pwa.js:41 Berhasil melakukan subscribe dengan auth key:  ROWtsuiNjdSbh2xBpyv/rA==
-
 Check :
 -
 [v] Memiliki 3 yang mengonsumsi data dari website football-data.org.
@@ -27,7 +22,14 @@ Check :
 [v] payload.js
 [v] Dapat ditambahkan ke homescreen.
 [v] splash screen.
+[v] Service Worker harus berbasis Workbox
+[v] Diunggah ke Firebase Hosting
+
 -
 [v] check bug
 [v] navbar sticky
 [v] spinner
+
+- Perbaikan dari review sebelumnya
+[v] add toash
+[v] add alt image
