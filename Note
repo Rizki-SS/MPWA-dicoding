@@ -20,11 +20,14 @@ pwa.js:39 Berhasil melakukan subscribe dengan p256dh key:  BFdbK9b/AEgM732MLdE+t
 pwa.js:41 Berhasil melakukan subscribe dengan auth key:  ROWtsuiNjdSbh2xBpyv/rA==
 
 Check :
+-
 [v] Memiliki 3 yang mengonsumsi data dari website football-data.org.
 [v] Support Offline.
 [v] Menyimpan data perandingan/match dan tim ke dalam indexDB dan menampilkan di halaman save
 [v] payload.js
 [v] Dapat ditambahkan ke homescreen.
 [v] splash screen.
-
+-
 [v] check bug
+[v] navbar sticky
+[v] spinner
