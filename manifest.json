@@ -2,7 +2,7 @@
     "name": "Premier Info",
     "short_name": "Premier Info",
     "description": "Aplikasi PWA Premier Info - DICODING submission 2",
-    "gcm_sender_id": "1088860100645",
+    "gcm_sender_id": "124691173234",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#40A8C4",
