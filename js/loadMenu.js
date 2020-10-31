@@ -10,7 +10,7 @@ const loadMenu = () => {
     const xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState === 4) {
-            if (this.status != 200) return;
+            if (this.status !== 200) return;
             document.querySelectorAll(".topnav, .sidenav")
                 .forEach((elm) => {
                     elm.innerHTML = xhttp.responseText;
