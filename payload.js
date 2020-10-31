@@ -21,7 +21,7 @@ var pushSubscription = {
 var payload = 'Notication Check Ok';
 
 var options = {
-    gcmAPIKey: '1088860100645',
+    gcmAPIKey: '124691173234',
     TTL: 60
 };
 webPush.sendNotification(
