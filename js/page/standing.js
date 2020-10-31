@@ -34,7 +34,7 @@ const runStanding = async() => {
 }
 
 const addHeader = (data) => {
-    document.querySelector("#logo-tim").innerHTML = `<img src="${data.team.crestUrl}" alt="" srcset="" style="width: 100%;">`;
+    document.querySelector("#logo-tim").innerHTML = `<img src="${data.team.crestUrl}" alt="${data.team.name}" srcset="" style="width: 100%;">`;
     document.querySelector("#tim-name").innerHTML = data.team.name;
     document.querySelector("#win").innerHTML = data.won;
     document.querySelector("#draw").innerHTML = data.draw;

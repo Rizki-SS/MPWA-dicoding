@@ -18,7 +18,7 @@ const runTeams = async() => {
                 <div class="col s12 m6 l4">
                     <div class="card medium sticky-action">
                         <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator" src="${data[i].crestUrl}">
+                        <img alt="${data[i].name}" class="activator" src="${data[i].crestUrl}">
                         </div>
                         <div class="card-content">
                         <span class="card-title activator grey-text text-darken-4">${data[i].name}<i class="material-icons right">more_vert</i></span>
@@ -36,7 +36,7 @@ const runTeams = async() => {
                         </div>
                     </div>
                 </div>`
-            logoTimList += `<a class="carousel-item"><img src="${data[i].crestUrl}"></a>`;
+            logoTimList += `<a class="carousel-item"><img src="${data[i].crestUrl}" alt="${data[i].name}"></a>`;
         }
 
         document.querySelector('#team-list').innerHTML = cardList;
