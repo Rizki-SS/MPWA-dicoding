@@ -74,7 +74,7 @@ const getAllTeam = () => {
             <div class="col s12 m6 l4">
                 <div class="card medium sticky-action">
                     <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator" src="${e.crestUrl}" alt="${e.name}>
+                    <img class="activator" src="${e.crestUrl}" alt="${e.name}">
                     </div>
                     <div class="card-content">
                     <span class="card-title activator grey-text text-darken-4">${e.name}<i class="material-icons right">more_vert</i></span>
